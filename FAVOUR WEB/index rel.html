@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070707">
+  <title>Favour Augustine Paulinus | Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #070707;
+      --card: #151515;
+      --text: #f5f5f5;
+      --muted: #b8b8b8;
+      --accent: #f04a32;
+      --orange: #ff765c;
+      --border: #292929;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #080808ed;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .logo span,
+    h1 span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--orange);
+    }
+
+    .menu {
+      display: none;
+      padding: 8px 12px;
+      background: var(--card);
+      color: white;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 620px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 45px;
+      padding: 70px 0;
+    }
+
+    .eyebrow {
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 0.78rem;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      line-height: 1.1;
+      margin: 18px 0;
+      overflow-wrap: anywhere;
+    }
+
+    .role {
+      color: var(--orange);
+      font-size: 1.15rem;
+      font-weight: bold;
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    .hero p {
+      margin-top: 15px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 11px 18px;
+      border-radius: 6px;
+      background: var(--accent);
+      border: 1px solid var(--accent);
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      background: var(--orange);
+    }
+
+    .btn.outline {
+      background: transparent;
+      border-color: #555;
+    }
+
+    .btn.outline:hover {
+      border-color: var(--orange);
+      background: #f04a3218;
+    }
+
+    /* MAIN PROFILE PICTURE */
+    .portrait {
+      aspect-ratio: 4 / 4.5;
+      max-width: 350px;
+      width: 100%;
+      margin: auto;
+      overflow: hidden;
+      border: 1px solid #51251d;
+      border-radius: 15px;
+      background: radial-gradient(
+        circle at 50% 35%,
+        #a92a19,
+        #42150f 38%,
+        #101010 72%
+      );
+      box-shadow: 0 0 55px #f04a3220;
+    }
+
+    .real-photo {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    section {
+      padding: 75px 0;
+      border-top: 1px solid #ffffff0c;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-top: 8px;
+    }
+
+    .underline {
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      margin: 12px auto;
+    }
+    .about-grid {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        align-items: center;
+        gap: 40px;
+      }
+  
+      .about-grid h3 {
+        color: var(--orange);
+        margin-bottom: 12px;
+      }
+  
+      .about-grid p {
+        margin-bottom: 12px;
+      }
+  
+      /* SECOND PROFILE PICTURE */
+      .about-art {
+        min-height: 260px;
+        overflow: hidden;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: radial-gradient(circle, #a92a19, #181010 70%);
+      }
+  
+      .about-photo {
+        width: 100%;
+        height: 100%;
+        min-height: 260px;
+        display: block;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 12px;
+      }
+  
+      .skills-grid,
+      .services-grid,
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+  
+      .card {
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: linear-gradient(145deg, #191919, #101010);
+        transition: transform 0.3s, border-color 0.3s;
+      }
+  
+      .card:hover {
+        transform: translateY(-6px);
+        border-color: #874034;
+      }
+  
+      .card h3 {
+        color: var(--orange);
+        margin: 12px 0 8px;
+      }
+  
+      .card p {
+        font-size: 0.94rem;
+      }
+  
+      .icon {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #f04a3225;
+        color: var(--orange);
+        font-weight: bold;
+      }
+  
+      .skill {
+        margin: 20px 0;
+      }
+  
+      .skill-label {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        font-size: 0.9rem;
+        font-weight: bold;
+      }
+  
+      .track {
+        height: 7px;
+        margin-top: 8px;
+        background: #292929;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+  
+      .fill {
+        width: 0;
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), var(--orange));
+        transition: width 1.4s ease;
+      }
+  
+      .skills-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+  
+      .timeline {
+        max-width: 760px;
+        margin: auto;
+        border-left: 2px solid #51251d;
+        padding-left: 25px;
+      }
+  
+      .timeline-item {
+        position: relative;
+        padding-bottom: 32px;
+      }
+  
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -33px;
+        top: 7px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--accent);
+        border: 3px solid #35120d;
+      }
+  
+      .date {
+        color: var(--orange);
+        font-size: 0.85rem;
+        font-weight: bold;
+      }
+  
+      .timeline-item h3 {
+        margin: 6px 0;
+      }
+  
+      .contact-box {
+        max-width: 720px;
+        margin: auto;
+        padding: 35px;
+        text-align: center;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+      }
+  
+      .contact-box p {
+        margin: 12px 0;
+      }
+  
+      .contact-box .buttons {
+        justify-content: center;
+      }
+  
+      footer {
+        padding: 25px 0;
+        text-align: center;
+        color: #888;
+        border-top: 1px solid var(--border);
+        font-size: 0.9rem;
+      }
+  
+      /* SCROLL ENTRANCE ANIMATIONS */
+      .reveal {
+        opacity: 0;
+        transform: translateY(25px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+  
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+  
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+  
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+  
+      @media (max-width: 760px) {
+        .menu {
+          display: block;
+        }
+  
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 66px;
+          left: 5%;
+          right: 5%;
+          padding: 18px;
+          background: #111;
+          border: 1px solid var(--border);
+          border-radius: 10px;
+          flex-direction: column;
+        }
+        .nav-links.open {
+            display: flex;
+          }
+    
+          .hero,
+          .about-grid,
+          .skills-layout {
+            grid-template-columns: 1fr;
+          }
+    
+          .hero {
+            padding: 50px 0;
+          }
+    
+          .hero > .reveal:first-child {
+            order: 2;
+          }
+    
+          .hero > .portrait {
+            order: 1;
+          }
+    
+          .portrait {
+            max-width: 280px;
+          }
+    
+          .skills-grid,
+          .services-grid,
+          .projects-grid {
+            grid-template-columns: 1fr;
+          }
+    
+          section {
+            padding: 60px 0;
+          }
+    
+          .contact-box {
+            padding: 25px 18px;
+          }
+        }
+      </style>
+    </head>
+    
+    <body>
+    
+    <header>
+      <nav class="container">
+        <a href="#home" class="logo">FAVOUR<span>.</span></a>
+    
+        <button
+          class="menu"
+          id="menu"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          aria-controls="navLinks"
+        >☰</button>
+    
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <main>
+    
+      <!-- HOME SECTION -->
+      <section class="hero container" id="home">
+    
+        <div class="reveal">
+          <div class="eyebrow">Welcome to my portfolio</div>
+    
+          <h1>
+            Hello,<br>
+            I'm <span>Favour</span>
+          </h1>
+    
+          <div class="role">Aspiring AI Evaluator &amp; Data Analyst</div>
+    
+          <p>
+            I am developing my skills in AI evaluation, research,
+            writing, data analysis, and technology. I enjoy solving
+            problems, learning new tools, and communicating ideas clearly.
+          </p>
+    
+          <div class="buttons">
+            <a class="btn" href="#contact">Contact Me</a>
+    
+            <a class="btn outline" href="#projects">View My Work</a>
+    
+            <!-- CV DOWNLOAD BUTTON -->
+            <a class="btn" href="FAVOUR AUGUSTINE PAULINUS cv.pdf" download>
+              Download My CV
+            </a>
+          </div>
+        </div>
+    
+        <!-- FIRST PICTURE: profile.jpg -->
+        <div class="portrait reveal">
+          <img
+            src="New folder/front.png"
+            alt="Portrait of Favour Augustine Paulinus"
+            class="real-photo"
+          >
+        </div>
+    
+      </section>
+    
+      <!-- ABOUT SECTION -->
+      <section id="about">
+        <div class="container">
+    
+          <div class="section-heading reveal">
+            <div class="eyebrow">A little introduction</div>
+            <h2>About Me</h2>
+            <div class="underline"></div>
+          </div>
+    
+          <div class="about-grid">
+    
+            <!-- SECOND PICTURE: about.jpg -->
+            <div class="about-art reveal">
+              <img
+                src="New folder/side.png"
+                alt="Favour Augustine Paulinus"
+                class="about-photo"
+              >
+            </div>
+    
+            <div class="reveal">
+              <h3>Curiosity is my motivation</h3>
+    
+              <p>
+                I am building practical experience in research,
+                clear communication, problem solving, and technology.
+                I enjoy learning new skills and completing tasks carefully.
+              </p>
+    
+              <p>
+                This portfolio showcases my learning journey and
+                selected projects. I will update it as I gain experience.
+              </p>
+    
+              <div class="buttons">
+                <a class="btn" href="#education">My Education</a>
+              </div>
+            </div>
+    
+          </div>
+        </div>
+      </section>
+    
+      <!-- EDUCATION SECTION -->
+      <section id="education">
+        <div class="container">
+    
+          <div class="section-heading reveal">
+            <div class="eyebrow">My learning journey</div>
+            <h2>Education</h2>
+            <div class="underline"></div>
+          </div>
+    
+          <div class="timeline">
+    
+            <article class="timeline-item reveal">
+              <div class="date">2024 – Expected 2027</div>
+              <h3>Bachelor in Science (B.Sc) Computer and Robotics Education</h3>
+              <p>University of Uyo</p>
+              <p>
+                <li>Computer Science Fundamentals</li>
+                <li>Educational Technology</li>
+                <li>Database Management Systems</li>
+                <li>Web Development</li>
+                <li>Problem solving</li>
+                <li>Robotics & Automation</li>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="date">Ongoing</div>
+          <h3>Independent Learning</h3>
+          <p>AI evaluation, research, data analysis, HTML and CSS</p>
+
+          <p>
+            <h4>Personal Portfolio Website</h4>
+            <p>
+                Created a personal website using HTML, CSS, and
+                JavaScript to showcase my skills, projects, and
+                contact information.
+            </p>
+        </div>
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS SECTION -->
+  <section id="skills">
+    <div class="container">
+
+      <div class="section-heading reveal">
+        <div class="eyebrow">What I bring</div>
+        <h2>My Skills</h2>
+        <div class="underline"></div>
+      </div>
+
+      <div class="skills-layout">
+
+        <div class="reveal">
+          <h3 style="color:#ff765c; margin-bottom:10px;">
+            Skills grow through practice
+          </h3>
+
+          <p>
+            I focus on careful research, following instructions,
+            accuracy, and clear communication. The percentages shown
+            are examples; adjust them to match your experience.
+          </p>
+        </div>
+
+        <div class="reveal">
+
+          <div class="skill">
+            <div class="skill-label">
+              <span>Research &amp; Fact-Checking</span>
+              <span>75%</span>
+            </div>
+            <div class="track">
+              <div class="fill" data-width="75%"></div>
+            </div>
+          </div>
+
+          <div class="skill">
+            <div class="skill-label">
+              <span>Writing &amp; Communication</span>
+              <span>80%</span>
+            </div>
+            <div class="track">
+              <div class="fill" data-width="80%"></div>
+            </div>
+          </div>
+
+          <div class="skill">
+            <div class="skill-label">
+              <span>HTML &amp; CSS</span>
+              <span>55%</span>
+            </div>
+            <div class="track">
+              <div class="fill" data-width="55%"></div>
+            </div>
+          </div>
+
+          <div class="skill">
+            <div class="skill-label">
+              <span>Data Analysis</span>
+              <span>40%</span>
+            </div>
+            <div class="track">
+              <div class="fill" data-width="40%"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section id="services">
+    <div class="container">
+
+      <div class="section-heading reveal">
+        <div class="eyebrow">How I can contribute</div>
+        <h2>Services &amp; Strengths</h2>
+        <div class="underline"></div>
+      </div>
+
+      <div class="services-grid">
+
+        <article class="card reveal">
+          <div class="icon">✦</div>
+          <h3>AI Response Review</h3>
+          <p>
+            Evaluate responses for relevance, clarity, accuracy,
+            and alignment with task guidelines.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <div class="icon">⌕</div>
+          <h3>Research &amp; Summaries</h3>
+          <p>
+            Organize information from relevant sources into
+            concise and readable summaries.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <div class="icon">▥</div>
+          <h3>Digital Projects</h3>
+          <p>
+            Build beginner-friendly websites and practice
+            presenting information clearly.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section id="projects">
+    <div class="container">
+
+      <div class="section-heading reveal">
+        <div class="eyebrow">Selected work</div>
+        <h2>My Projects</h2>
+        <div class="underline"></div>
+      </div>
+
+      <div class="projects-grid">
+      <article class="card reveal">
+          <div class="icon">01</div>
+          <h3>Portfolio Website</h3>
+          <p>
+            A responsive personal portfolio created with HTML,
+            CSS, and JavaScript.
+          </p>
+
+          <a
+            class="btn outline"
+            style="margin-top:15px;"
+            href="#home"
+          >View Website</a>
+        </article>
+
+        <article class="card reveal">
+          <div class="icon">02</div>
+          <h3>Research Brief</h3>
+          <p>
+            Add a real research summary here, including its
+            topic, sources, and key findings.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <div class="icon">03</div>
+          <h3>AI Evaluation Sample</h3>
+          <p>
+            Add a sample you created yourself, including
+            your evaluation criteria and reasoning.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact">
+    <div class="container">
+
+      <div class="contact-box reveal">
+        <div class="eyebrow">Have a project in mind?</div>
+        <h2>Let's Connect</h2>
+
+        <p>
+          For opportunities, collaboration, or professional
+          inquiries, reach me through the links below.
+        </p>
+
+        <div class="buttons">
+
+          <!-- Replace with your actual email -->
+          <a
+            class="btn"
+            href="favouraugustine610@mail.com"
+          >Email Me</a>
+
+          <!-- Replace with your actual GitHub username -->
+          <a
+            class="btn outline"
+            href="https://github.com/justmeblock"
+            target="_blank"
+            rel="noopener noreferrer"
+          >GitHub</a>
+
+          <!-- Replace with your actual LinkedIn profile -->
+          <a
+            class="btn outline"
+            href="https://www.linkedin.com/in/justmeblock"
+            target="_blank"
+            rel="noopener noreferrer"
+          >LinkedIn</a>
+
+          <!-- Replace with your actual X profile -->
+          <a
+            class="btn outline"
+            href="https://x.com/justmeblock"
+            target="_blank"
+            rel="noopener noreferrer"
+          >X / Twitter</a>
+
+        </div>
+
+        <p style="font-size:.82rem; margin-top:20px;">
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>
+      &copy; <span id="year"></span>
+      Favour Augustine. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Automatically update the copyright year
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+  // Mobile navigation menu
+  const menu = document.getElementById("menu");
+  const navLinks = document.getElementById("navLinks");
+
+  menu.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("open");
+
+    menu.setAttribute("aria-expanded", String(isOpen));
+    menu.textContent = isOpen ? "✕" : "☰";
+  });
+
+  // Close the mobile menu after clicking a navigation link
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      menu.setAttribute("aria-expanded", "false");
+      menu.textContent = "☰";
+    });
+  });
+
+  // Reveal elements when they enter the screen
+  if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    document.querySelectorAll(".reveal").forEach(element => {
+      revealObserver.observe(element);
+    });
+    // Animate the skill progress bars
+    const skillObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.width =
+              entry.target.dataset.width;
+
+            skillObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    document.querySelectorAll(".fill").forEach(bar => {
+      skillObserver.observe(bar);
+    });
+
+  } else {
+    // Fallback for older browsers
+    document.querySelectorAll(".reveal").forEach(element => {
+      element.classList.add("visible");
+    });
+
+    document.querySelectorAll(".fill").forEach(bar => {
+      bar.style.width = bar.dataset.width;
+    });
+  }
+</script>
+
+</body>
+</html>
